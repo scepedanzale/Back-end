@@ -31,9 +31,10 @@
         </form>
     </div>
 
-    <div class="container my-5">
-        <table class="w-100">
+    <div class="container-fluid my-5">
+        <table class="w-100 table table-striped table-dark table-hover">
             <tr>
+                <th>#</th>
                 <th>Nome</th>
                 <th>Cognome</th>
                 <th>Email</th>
@@ -46,11 +47,16 @@
 
                 if(isset($_SESSION['utenti'])) {
                     foreach ($_SESSION['utenti'] as $key => $value) {
-                        echo '<tr>';
-                        foreach ($value as $key2 => $value2) {
-                            echo '<td>' . $value2 . '</td>';
-                        }
-                        echo '</tr>';
+                        ?>
+                        <tr>
+                          <td><?=$key+1?></td>
+                          <td><?=$value['firstname']?></td>
+                          <td><?=$value['lastname']?></td>
+                          <td><?=$value['email']?></td>
+                          <td><?=$value['telefono']?></td>
+                          <td><?=$value['citta']?></td>
+                        </tr>
+                        <?php
                     }
                 }
             ?>
